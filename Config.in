@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_LITEX_M2SDR_BUILDROOT_PATH/package/soapy-sdr/Config.in"
