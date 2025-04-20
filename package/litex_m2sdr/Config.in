@@ -1,0 +1,12 @@
+config BR2_PACKAGE_LITEX_M2SDR
+	bool "LiteX-M2SDR"
+	help
+	  LiteX-M2SDR
+
+	  https://github.com/enjoy-digital/litex_m2sdr
+
+if BR2_PACKAGE_LITEX_M2SDR
+
+source "$BR2_EXTERNAL_LITEX_M2SDR_BUILDROOT_PATH/package/litex_m2sdr/litex_m2sdr_driver/Config.in"
+
+endif
