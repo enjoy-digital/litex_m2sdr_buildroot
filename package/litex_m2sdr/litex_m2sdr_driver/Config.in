@@ -1,0 +1,10 @@
+# Prompt-less option, because this package is not doing anything
+# except downloading the FB TFT sources. The real work is done by a
+# Linux extension.
+config BR2_PACKAGE_LITEX_M2SDR_DRIVER
+	bool
+	depends on BR2_LINUX_KERNEL
+	help
+	  LiteX-M2SDR
+
+	  https://github.com/enjoy-digital/litex_m2sdr
