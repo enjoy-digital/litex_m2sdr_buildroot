@@ -50,7 +50,7 @@ endef
 
 define LITEX_M2SDR_USER_INSTALL_TARGET_CMDS
 	$(foreach binary,$(LITEX_M2SDR_USER_BINARIES), \
-		$(INSTALL) -D -m 0644 $(@D)/$(LITEX_M2SDR_USER_SUBDIR)/$(binary) \
+		$(INSTALL) -D -m 0755 $(@D)/$(LITEX_M2SDR_USER_SUBDIR)/$(binary) \
 		$(TARGET_DIR)/usr/bin
 	)
 endef
