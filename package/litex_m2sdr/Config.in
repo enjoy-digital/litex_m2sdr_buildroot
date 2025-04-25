@@ -8,5 +8,7 @@ config BR2_PACKAGE_LITEX_M2SDR
 if BR2_PACKAGE_LITEX_M2SDR
 
 source "$BR2_EXTERNAL_LITEX_M2SDR_BUILDROOT_PATH/package/litex_m2sdr/litex_m2sdr_driver/Config.in"
+source "$BR2_EXTERNAL_LITEX_M2SDR_BUILDROOT_PATH/package/litex_m2sdr/litex_m2sdr_user/Config.in"
+source "$BR2_EXTERNAL_LITEX_M2SDR_BUILDROOT_PATH/package/litex_m2sdr/litex_m2sdr_soapysdr/Config.in"
 
 endif
