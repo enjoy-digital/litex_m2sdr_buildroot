@@ -1,0 +1,26 @@
+################################################################################
+#
+# LiteX-M2SDR SoapySDR Module
+#
+################################################################################
+
+LITEX_M2SDR_SOAPYSDR_VERSION = $(LITEX_M2SDR_VERSION)
+LITEX_M2SDR_SOAPYSDR_SOURCE = litex_m2sdr-$(LITEX_M2SDR_VERSION).tar.gz
+LITEX_M2SDR_SOAPYSDR_SITE = $(LITEX_M2SDR_SITE)
+LITEX_M2SDR_SOAPYSDR_DL_SUBDIR = litex_m2sdr
+LITEX_M2SDR_SOAPYSDR_LICENSE = $(LITEX_M2SDR_LICENSE)
+LITEX_M2SDR_SOAPYSDR_LICENSE_FILES = $(LITEX_M2SDR_LICENSE_FILES)
+LITEX_M2SDR_SOAPYSDR_SUBDIR = litex_m2sdr/software/soapysdr
+
+LITEX_M2SDR_SOAPYSDR_SUPPORTS_IN_SOURCE_BUILD = NO
+
+LITEX_M2SDR_SOAPYSDR_DEPENDENCIES = \
+	litex_m2sdr_user soapy-sdr
+
+ifeq ($(BR2_PACKAGE_LITEX_M2SDR_SOAPYSDR_LITEPCIE),y)
+	LITEX_M2SDR_SOAPYSDR_CONF_OPTS += -DUSE_LITEETH=OFF
+else
+	LITEX_M2SDR_SOAPYSDR_CONF_OPTS += -DUSE_LITEETH=ON
+endif
+
+$(eval $(cmake-package))

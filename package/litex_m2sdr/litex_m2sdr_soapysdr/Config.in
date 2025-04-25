@@ -1,0 +1,28 @@
+comment "LiteX-M2SDR SoapySDR Module needs soapySDR"
+	depends on !BR2_PACKAGE_SOAPY_SDR
+
+config BR2_PACKAGE_LITEX_M2SDR_SOAPYSDR
+	bool "LiteX-M2SDR SoapySDR Module"
+
+	depends on BR2_PACKAGE_SOAPY_SDR
+	select BR2_PACKAGE_LITEX_M2SDR_USER
+	help
+	  LiteX-M2SDR SoapySDR Module
+
+	  https://github.com/enjoy-digital/litex_m2sdr
+
+if BR2_PACKAGE_LITEX_M2SDR_SOAPYSDR
+
+choice
+	prompt "LiteX-M2SDR SoapySDR transport"
+	default BR2_PACKAGE_LITEX_M2SDR_SOAPYSDR_LITEPCIE
+
+config BR2_PACKAGE_LITEX_M2SDR_SOAPYSDR_LITEPCIE
+	bool "LitePCIe"
+
+config BR2_PACKAGE_LITEX_M2SDR_SOAPYSDR_LITEETH
+	bool "LiteEth"
+
+endchoice
+
+endif
