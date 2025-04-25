@@ -34,6 +34,14 @@ LITEX_M2SDR_USER_AD9361_HEADERS = ad9361/platform.h \
 	ad9361/util.h \
 	ad9361/config.h
 
+LITEX_M2SDR_USER_KERNEL_HEADERS = kernel/config.h \
+	kernel/csr.h \
+	kernel/flags.h \
+	kernel/litepcie.h \
+	kernel/litex.h \
+	kernel/mem.h \
+	kernel/soc.h
+
 define LITEX_M2SDR_USER_BUILD_CMDS
 	echo $(@D)
 	$(TARGET_MAKE_ENV) $(MAKE) CC="$(TARGET_CC)" \
@@ -66,6 +74,10 @@ define LITEX_M2SDR_USER_INSTALL_STAGING_CMDS
 	)
 	$(foreach header,$(LITEX_M2SDR_USER_AD9361_HEADERS), \
 		$(INSTALL) -D -m 0644 $(@D)/$(LITEX_M2SDR_USER_SUBDIR)/$(header) \
+		$(STAGING_DIR)/usr/include/$(header)
+	)
+	$(foreach header,$(LITEX_M2SDR_USER_KERNEL_HEADERS), \
+		$(INSTALL) -D -m 0644 $(@D)/$(LITEX_M2SDR_USER_SUBDIR)/../$(header) \
 		$(STAGING_DIR)/usr/include/$(header)
 	)
 endef
