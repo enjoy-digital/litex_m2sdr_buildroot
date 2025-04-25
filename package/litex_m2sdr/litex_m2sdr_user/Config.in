@@ -1,0 +1,6 @@
+config BR2_PACKAGE_LITEX_M2SDR_USER
+	bool "LiteX-M2SDR User Applications"
+	help
+	  LiteX-M2SDR User applications
+
+	  https://github.com/enjoy-digital/litex_m2sdr
