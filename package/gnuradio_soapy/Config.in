@@ -8,7 +8,7 @@ comment "gnuradio needs a toolchain w/ C++, NPTL, wchar, dynamic library, gcc >=
 comment "gnuradio needs a toolchain not affected by GCC bug 43744"
 	depends on BR2_TOOLCHAIN_HAS_GCC_BUG_43744
 
-config BR2_PACKAGE_INT_GNURADIO
+config BR2_PACKAGE_GNURADIO_SOAPY
 	bool "gnuradio"
 	depends on BR2_INSTALL_LIBSTDCPP
 	depends on !BR2_STATIC_LIBS
@@ -41,40 +41,40 @@ config BR2_PACKAGE_INT_GNURADIO
 
 	  http://gnuradio.org/
 
-if BR2_PACKAGE_INT_GNURADIO
+if BR2_PACKAGE_GNURADIO_SOAPY
 
-config BR2_PACKAGE_INT_GNURADIO_AUDIO
+config BR2_PACKAGE_GNURADIO_SOAPY_AUDIO
 	bool "gr-audio"
 	select BR2_PACKAGE_ALSA_LIB if !BR2_PACKAGE_PORTAUDIO
 	help
 	  Add audio source/sink to GNU Radio
 
-config BR2_PACKAGE_INT_GNURADIO_BLOCKS
+config BR2_PACKAGE_GNURADIO_SOAPY_BLOCKS
 	bool "blocks support"
 	help
 	  GNU Radio basic block library
 
-config BR2_PACKAGE_INT_GNURADIO_CTRLPORT
+config BR2_PACKAGE_GNURADIO_SOAPY_CTRLPORT
 	bool "ctrlport support"
 	help
 	  GNU Radio ctrlport block
 
-config BR2_PACKAGE_INT_GNURADIO_DTV
+config BR2_PACKAGE_GNURADIO_SOAPY_DTV
 	bool "gr-dtv support"
-	select BR2_PACKAGE_INT_GNURADIO_ANALOG
-	select BR2_PACKAGE_INT_GNURADIO_FEC
-	select BR2_PACKAGE_INT_GNURADIO_FILTER
+	select BR2_PACKAGE_GNURADIO_SOAPY_ANALOG
+	select BR2_PACKAGE_GNURADIO_SOAPY_FEC
+	select BR2_PACKAGE_GNURADIO_SOAPY_FILTER
 	help
 	  various digital television standards blocks
 
-config BR2_PACKAGE_INT_GNURADIO_FEC
+config BR2_PACKAGE_GNURADIO_SOAPY_FEC
 	bool "gr-fec support"
-	select BR2_PACKAGE_INT_GNURADIO_BLOCKS
+	select BR2_PACKAGE_GNURADIO_SOAPY_BLOCKS
 	select BR2_PACKAGE_GSL
 	help
 	  FEC signal processing blocks
 
-config BR2_PACKAGE_INT_GNURADIO_PYTHON
+config BR2_PACKAGE_GNURADIO_SOAPY_PYTHON
 	bool "python support"
 	depends on BR2_PACKAGE_PYTHON3
 	depends on BR2_PACKAGE_PYTHON_NUMPY_ARCH_SUPPORTS
@@ -91,76 +91,76 @@ comment "python support needs a glibc or musl toolchain w/ host gcc >= 9"
 	depends on !BR2_HOST_GCC_AT_LEAST_9 || \
 		!(BR2_TOOLCHAIN_USES_GLIBC || BR2_TOOLCHAIN_USES_MUSL)
 
-config BR2_PACKAGE_INT_GNURADIO_SOAPY
+config BR2_PACKAGE_GNURADIO_SOAPY_SOAPY
 	bool "gr-soapy support"
 	select BR2_PACKAGE_INT_SOAPY_SDR
 	help
 	  Soapy SDR support
 
-config BR2_PACKAGE_INT_GNURADIO_UTILS
+config BR2_PACKAGE_GNURADIO_SOAPY_UTILS
 	bool "gr-utils support"
-	depends on BR2_PACKAGE_INT_GNURADIO_PYTHON
+	depends on BR2_PACKAGE_GNURADIO_SOAPY_PYTHON
 	help
 	  Misc python utilities
 
-config BR2_PACKAGE_INT_GNURADIO_ZEROMQ
+config BR2_PACKAGE_GNURADIO_SOAPY_ZEROMQ
 	bool "gr-zeromq support"
 	select BR2_PACKAGE_CPPZMQ
-	select BR2_PACKAGE_PYTHON_PYZMQ if BR2_PACKAGE_INT_GNURADIO_PYTHON
+	select BR2_PACKAGE_PYTHON_PYZMQ if BR2_PACKAGE_GNURADIO_SOAPY_PYTHON
 	help
 	  zeromq communication support
 
-config BR2_PACKAGE_INT_GNURADIO_ANALOG
+config BR2_PACKAGE_GNURADIO_SOAPY_ANALOG
 	bool "gr-analog support"
-	select BR2_PACKAGE_INT_GNURADIO_FILTER
+	select BR2_PACKAGE_GNURADIO_SOAPY_FILTER
 	help
 	  Analog communications blocks
 
-config BR2_PACKAGE_INT_GNURADIO_CHANNELS
+config BR2_PACKAGE_GNURADIO_SOAPY_CHANNELS
 	bool "gr-channels support"
-	select BR2_PACKAGE_INT_GNURADIO_ANALOG
+	select BR2_PACKAGE_GNURADIO_SOAPY_ANALOG
 	help
 	  Channel model blocks
 
-config BR2_PACKAGE_INT_GNURADIO_DIGITAL
+config BR2_PACKAGE_GNURADIO_SOAPY_DIGITAL
 	bool "gr-digital support"
-	select BR2_PACKAGE_INT_GNURADIO_ANALOG
+	select BR2_PACKAGE_GNURADIO_SOAPY_ANALOG
 	help
 	  Digital communications blocks
 
-config BR2_PACKAGE_INT_GNURADIO_FFT
+config BR2_PACKAGE_GNURADIO_SOAPY_FFT
 	bool "gr-fft support"
 	select BR2_PACKAGE_FFTW
 	select BR2_PACKAGE_FFTW_SINGLE
-	select BR2_PACKAGE_INT_GNURADIO_BLOCKS
+	select BR2_PACKAGE_GNURADIO_SOAPY_BLOCKS
 	help
 	  FFT signal processing blocks
 
-config BR2_PACKAGE_INT_GNURADIO_FILTER
+config BR2_PACKAGE_GNURADIO_SOAPY_FILTER
 	bool "gr-filter support"
-	select BR2_PACKAGE_INT_GNURADIO_FFT
+	select BR2_PACKAGE_GNURADIO_SOAPY_FFT
 	help
 	  Filter signal processing blocks
 
-config BR2_PACKAGE_INT_GNURADIO_IIO
+config BR2_PACKAGE_GNURADIO_SOAPY_IIO
 	bool "gr-iio support"
 	select BR2_PACKAGE_LIBIIO
-	select BR2_PACKAGE_INT_GNURADIO_BLOCKS
+	select BR2_PACKAGE_GNURADIO_SOAPY_BLOCKS
 	help
 	  IIO support
 
-config BR2_PACKAGE_INT_GNURADIO_NETWORK
+config BR2_PACKAGE_GNURADIO_SOAPY_NETWORK
 	bool "gr-network support"
-	select BR2_PACKAGE_INT_GNURADIO_BLOCKS
+	select BR2_PACKAGE_GNURADIO_SOAPY_BLOCKS
 	help
 	  TCP and UDP source/sink blocks
 
-config BR2_PACKAGE_INT_GNURADIO_QTGUI
+config BR2_PACKAGE_GNURADIO_SOAPY_QTGUI
 	bool "gr-qtgui"
-	depends on BR2_PACKAGE_INT_GNURADIO_PYTHON
+	depends on BR2_PACKAGE_GNURADIO_SOAPY_PYTHON
 	depends on BR2_PACKAGE_QT5
-	select BR2_PACKAGE_INT_GNURADIO_FFT
-	select BR2_PACKAGE_INT_GNURADIO_FILTER
+	select BR2_PACKAGE_GNURADIO_SOAPY_FFT
+	select BR2_PACKAGE_GNURADIO_SOAPY_FILTER
 	select BR2_PACKAGE_PYTHON_PYQT5
 	select BR2_PACKAGE_QT5BASE_FONTCONFIG # runtime
 	select BR2_PACKAGE_QT5BASE_GUI # runtime
@@ -169,18 +169,18 @@ config BR2_PACKAGE_INT_GNURADIO_QTGUI
 	help
 	  GNU Radio Qt scopes
 
-config BR2_PACKAGE_INT_GNURADIO_TRELLIS
+config BR2_PACKAGE_GNURADIO_SOAPY_TRELLIS
 	bool "gr-trellis support"
-	select BR2_PACKAGE_INT_GNURADIO_DIGITAL
+	select BR2_PACKAGE_GNURADIO_SOAPY_DIGITAL
 	help
 	  Trellis coded modulation blocks
 
-config BR2_PACKAGE_INT_GNURADIO_UHD
+config BR2_PACKAGE_GNURADIO_SOAPY_UHD
 	bool "gr-uhd support"
 	select BR2_PACKAGE_UHD
-	select BR2_PACKAGE_INT_GNURADIO_ANALOG
-	select BR2_PACKAGE_INT_GNURADIO_BLOCKS
-	select BR2_PACKAGE_INT_GNURADIO_FILTER
+	select BR2_PACKAGE_GNURADIO_SOAPY_ANALOG
+	select BR2_PACKAGE_GNURADIO_SOAPY_BLOCKS
+	select BR2_PACKAGE_GNURADIO_SOAPY_FILTER
 	help
 	  UHD support
 
