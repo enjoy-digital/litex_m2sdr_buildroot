@@ -18,3 +18,6 @@ dtoverlay=pcie-32bit-dma-pi5
 dtoverlay=pciex1-compat-pi5,l1ss=off,no-l0s=on,no-mip=off
 # Run as fast as firmware/board allows
 arm_boost=1
+
+# To use HDMI audio
+dtoverlay=vc4-kms-v3d
