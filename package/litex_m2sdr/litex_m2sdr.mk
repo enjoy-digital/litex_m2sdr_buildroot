@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LITEX_M2SDR_VERSION = 8c61457a56015c16ab27e8c4bfd00a979c63342c
+LITEX_M2SDR_VERSION = 8c32d5d85653023d0e5262ed909d82564412731f
 LITEX_M2SDR_SITE = $(call github,enjoy-digital,litex_m2sdr,$(LITEX_M2SDR_VERSION))
 
 LITEX_M2SDR_LICENSE = BSD-2-Clause

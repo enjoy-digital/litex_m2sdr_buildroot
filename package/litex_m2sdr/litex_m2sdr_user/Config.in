@@ -1,5 +1,8 @@
 config BR2_PACKAGE_LITEX_M2SDR_USER
 	bool "LiteX-M2SDR User Applications"
+	select BR2_PACKAGE_FFMPEG
+	select BR2_PACKAGE_LIBSAMPLERATE
+	select BR2_PACKAGE_LIBSNDFILE
 	help
 	  LiteX-M2SDR User applications
 
