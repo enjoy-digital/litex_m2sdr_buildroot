@@ -4,7 +4,3 @@ source "$BR2_EXTERNAL_LITEX_M2SDR_BUILDROOT_PATH/linux/Config.ext.in"
 
 comment "SDR"
 source "$BR2_EXTERNAL_LITEX_M2SDR_BUILDROOT_PATH/package/gnuradio_soapy/Config.in"
-source "$BR2_EXTERNAL_LITEX_M2SDR_BUILDROOT_PATH/package/soapy-sdr/Config.in"
-
-comment "Copy/temporary packages"
-source "$BR2_EXTERNAL_LITEX_M2SDR_BUILDROOT_PATH/package/rpi-firmware-next/Config.in"
