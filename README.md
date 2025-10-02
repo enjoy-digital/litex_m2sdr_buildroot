@@ -5,6 +5,15 @@ It uses the `BR2_EXTERNAL` mechanism to extend Buildroot with additional package
 
 This support has been tested with the latest stable Buildroot release **2025.08** (commit `3386677f0a4d1c0150e772eb07cede05e88a2d6d`).
 
+## Hardware setup
+
+Below is the [LiteX-M2SDR](https://github.com/enjoy-digital/litex_m2sdr) installed on a [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/).
+
+![Connecting LiteX-M2SDR to the Raspberry Pi 5](https://github.com/user-attachments/assets/7205b4a2-814d-4db2-87c0-573993c92a3e)
+![Raspberry Pi 5 Max from the CPU side](https://github.com/user-attachments/assets/4f821f79-f274-4270-8642-5e7e556e8577)
+
+To connect the LiteX-M2SDR on the Raspberry Pi 5 board, you need an M.2 hat like the [Pineboards HatDrive BM1L](https://pineboards.io/products/hatdrive-bottom-2230-2242-2280-for-rpi5).
+
 ## How to Use
 
 ### Download Buildroot
@@ -82,6 +91,22 @@ You can verify the device name with `dmesg`.
 
 ⚠️ <font color="red">**Warning:** This step will overwrite all data on the target device. Double-check the device name before proceeding.</font>
 
+
+## Notes
+
+### Configuration
+
+As mentioned in [LiteX M2SDR documentation for RPI5](https://github.com/enjoy-digital/litex_m2sdr/blob/main/doc/hosts/raspberry-pi-5.md#tweaking-the-system), the `config.txt` must be modified. In this
+repository this step is not required: *boards/raspberrypi5/config_5.txt* contains required
+parameters.
+
+### CPUFreq
+
+By default, CPUs are configured with a `scaling_governor` set to `ondemand`. To pass to CPUs in
+`performance` mode, please use this command:
+```bash
+for i in $(seq 0 3); do echo performance > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor ; done
+```
 
 ## Repository structure
 
